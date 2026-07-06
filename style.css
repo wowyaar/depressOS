@@ -261,7 +261,6 @@ html, body {
   will-change: transform;
 }
 .laptop-container:hover {
-  animation: laptop-float 4s ease-in-out infinite;
   filter: brightness(1.04);
 }
 .laptop-container:hover .laptop-svg { filter: drop-shadow(0 12px 30px rgba(255,230,0,0.45)); }
@@ -290,6 +289,8 @@ html, body {
   transition: filter 0.3s;
   overflow: visible;
 }
+
+
 
 /* Click-to-start text animation on SVG */
 .click-to-start-text {
@@ -432,6 +433,27 @@ html, body {
   z-index: 30;
   animation: window-slam 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
   flex-shrink: 0;
+  /* Needed for dragging */
+  position: relative;
+  will-change: transform;
+  transition: box-shadow 0.15s;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+.retro-window.dragging {
+  box-shadow: 14px 14px 0 var(--ink);
+  cursor: grabbing !important;
+  z-index: 100;
+}
+
+/* Tilt animation classes */
+.retro-window.tilted {
+  transform: rotateY(180deg);
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.retro-window.un-tilted {
+  transform: rotateY(0deg);
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 @keyframes window-slam {
   from { opacity: 0; transform: scale(0.75) translateY(24px) rotate(2deg); }
@@ -450,16 +472,19 @@ html, body {
   font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
   border-bottom: 3px solid var(--ink);
   user-select: none;
+  cursor: grab;
 }
+.win-titlebar:active { cursor: grabbing; }
 .win-titlebar.small { font-size: 10px; padding: 6px 10px; }
 .win-close {
   width: 22px; height: 22px;
   border: 2px solid rgba(255,255,255,0.55);
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.15s;
+  flex-shrink: 0;
 }
-.win-close:hover { background: rgba(255,255,255,0.2); }
+.win-close:hover { background: rgba(255,255,255,0.2); transform: scale(1.2); }
 
 .win-body { padding: 18px; }
 
@@ -649,7 +674,14 @@ html, body {
 }
 .bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4ade80 0%, #facc15 40%, #f97316 70%, #ef4444 100%);
+  background: linear-gradient(90deg, 
+    #15803d 0%, #15803d 16.67%,
+    #65a30d 16.67%, #65a30d 26.19%,
+    #ca8a04 26.19%, #ca8a04 32.54%,
+    #c2410c 32.54%, #c2410c 48.41%,
+    #dc2626 48.41%, #dc2626 64.28%,
+    #7f1d1d 64.28%, #7f1d1d 100%
+  );
   width: 0%; transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
 }
 .bar-legend {
@@ -735,23 +767,79 @@ html, body {
 
 /* ── PRINT ──────────────────────────────────────────────────── */
 @media print {
-  .scribble-svg, .code-bg, .global-nav,
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #fdfdfd;
+    background-image: radial-gradient(#d5d5d5 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .scribble-svg, .global-nav,
   .laptop-container, .obj-notebook, .obj-mug,
-  .email-badge, .quiz-laptop-wrap, .results-mug-wrap { display: none !important; }
-  body { overflow: auto; }
+  .email-badge, .quiz-laptop-wrap, .results-mug-wrap,
+  .no-print { display: none !important; }
+  
+  .code-bg { opacity: 0.1 !important; display: block !important; }
+
   .screen { position: static !important; display: block !important; overflow: visible; }
   #screen-landing, #screen-quiz { display: none !important; }
-  #screen-results { display: block !important; }
-  .results-body { max-height: none; overflow: visible; }
-  .retro-window { box-shadow: none; }
+  #screen-results { display: block !important; padding: 0 !important; }
+  
+  .results-body { 
+    max-height: none; 
+    overflow: visible; 
+    padding: 30px; 
+  }
+  
+  .retro-window { 
+    box-shadow: 8px 8px 0 var(--cyan) !important; 
+    border: 3px solid var(--ink) !important;
+    margin: 30px auto;
+    border-radius: 4px;
+    background: #fff !important;
+    transform: rotate(0.5deg);
+  }
+  
+  .win-titlebar {
+    background: var(--blue) !important;
+    color: #fff !important;
+    border-bottom: 3px solid var(--ink) !important;
+    font-size: 14px;
+  }
+  
+  .win-title::before { content: "🖨️ CONFIDENTIAL: "; }
+  .result-date { font-weight: bold; color: var(--magenta); font-size: 12px; }
+  .big-score { color: var(--blue); text-shadow: 2px 2px 0px var(--cyan); }
+  .severity-band {
+    border-width: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    border-style: dashed;
+    box-shadow: none !important;
+    transform: rotate(-0.5deg);
+  }
+  .review-list { display: flex !important; page-break-inside: avoid; }
+  .review-item { 
+    border-color: #ddd; 
+    background: #fcfcfc; 
+    page-break-inside: avoid; 
+  }
+  .results-disclaimer { 
+    font-weight: 700; 
+    font-size: 12px; 
+    color: var(--magenta); 
+    text-align: center; 
+    border-top-style: dotted; 
+    margin-top: 30px;
+  }
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  #screen-quiz  { flex-direction: column; padding: 72px 16px 20px; height: 100vh; overflow-y: auto; }
-  #screen-results { flex-direction: column; padding: 72px 16px 20px; height: 100vh; overflow-y: auto; }
-  .quiz-window, .results-window { max-width: 100%; }
-  .score-window { align-self: auto; }
+  #screen-quiz  { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
+  #screen-results { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
+  .windows-container { flex-direction: column; align-items: stretch !important; gap: 16px; }
+  .quiz-window, .results-window, .share-window { max-width: 100% !important; margin: 0; flex: none !important; }
+  .score-window { align-self: stretch; max-width: 100%; margin: 0; }
   .results-mug-wrap { display: none; }
   .obj-notebook { right: 1%; top: 2%; }
   .obj-mug { right: 1%; bottom: 2%; }
@@ -760,5 +848,10 @@ html, body {
 @media (max-width: 560px) {
   .laptop-svg { width: 92vw; }
   .obj-notebook { display: none; }
-  .big-score { font-size: 60px; }
+  .big-score { font-size: 50px; }
+  .win-body { padding: 16px 12px 20px; }
+  .win-titlebar { padding: 4px 6px; }
+  .options-grid { gap: 8px; margin-top: 16px; }
+  .option-btn { padding: 12px 10px; font-size: 14px; }
+  .nav-bar { padding: 8px 12px; }
 }
