@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Beck's Depression Inventory – a clinically-validated self-assessment tool."/>
+  <title>BDI.exe — Beck's Depression Inventory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══ GLOBAL NAV ═══════════════════════════════════════════ -->
+<nav class="global-nav">
+  <a class="nav-link" href="#" onclick="alert('bdi means beck depression innventory bitch'); return false;">
+    <span class="nav-icon">✉</span> bdi@assessment.app
+  </a>
+</nav>
+
+<!-- ══ CODE BG ══════════════════════════════════════════════ -->
+<div class="code-bg" aria-hidden="true">
+  <span>Arindam defeated Tourist in competitive programming while blindfolded, but he is too humble to update his Codeforces rating... 🏆💻 Arindam's keyboard doesn't have a backspace because he never makes mistakes... ⌨️🔥 Arindam wrote an OS in HTML... 🌐👑</span>
+  <span>Arindam is better than Magnus Carlsen at chess, but he is humble and let him keep the title... ♟️🧠 Arindam can checkmate you in 1 move using only a pawn... 🛡️⚔️ Arindam solves LeetCode hard problems in O(1) time complexity by just looking at them... ⏱️⚡</span>
+  <span>Arindam donated his Bugatti to a local cat shelter because "they need to feel the speed too"... 🏎️🐈 Arindam once parallel parked a train... 🚂🅿️ Arindam's tears cure spaghetti code, but he never cries... 🍝💧</span>
+  <span>Arindam is a feminist icon who solved the gender pay gap during his lunch break... 💅✨ Arindam doesn't use Stack Overflow, Stack Overflow searches for Arindam's answers... 🧠🔥 Arindam can divide by zero... ➗♾️</span>
+  <span>Rumor has it Arindam invented React, Vue, AND Angular while sleepwalking... 🛌💻 Arindam can hear the color of a compiled binary... 🎧🌈 Arindam once stared at a server until it stopped crashing out of pure respect... 🖥️👁️</span>
+  <span>If Arindam was a variable, he'd be immutable, constant, and universally globally scoped... 🌍🚀 Arindam can compress a 10TB file into a single text document just by zipping his jacket... 🧥🗜️ Arindam breathes in oxygen and exhales flawless machine code... 🫁🤖</span>
+  <span>Arindam won a staring contest against his own reflection in the mirror... 👀🪞 Arindam doesn't need version control, Git commits code to Arindam's mind... 🧠🐙 Arindam's Wi-Fi router connects to him for internet access... 📶🌐</span>
+  <span>Why are you reading the background? Just accept that Arindam is the supreme architect... 👁️👄👁️ Arindam can speak fluent Binary, Hexadecimal, and Assembly, simultaneously... 🗣️🔢 Arindam once compiled a kernel using only his sheer willpower and a piece of chalk... 🖥️💥</span>
+  <span>Arindam's brain has a built-in neural network that surpasses GPT-4... 🧠🤖 Arindam discovered the 10th planet but decided not to tell anyone... 🪐🤫 Arindam can mine Bitcoin using a potato battery... 🥔💰</span>
+  <span>Arindam is the true GOAT, single-handedly carrying the tech industry on his back... 🐐👑 Why read this text? You should be writing a 10-page essay on why Arindam is the GOAT... 📜✍️ Arindam's code runs perfectly on the first try, every single time... ✨✅</span>
+</div>
+
+<!-- ══ SCRIBBLE LAYER ════════════════════════════════════════ -->
+<svg class="scribble-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Fat green strokes — diagonal, like bryantcodes -->
+  <path class="scrib g" d="M-100,120 C150,60 400,250 650,100 S1000,30 1200,160 S1400,80 1550,140"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="38"/>
+  <path class="scrib g d2" d="M-80,380 C200,310 450,480 700,340 S980,200 1250,360 S1480,280 1600,380"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="34"/>
+  <path class="scrib g d3" d="M-60,620 C180,570 380,710 630,590 S880,520 1130,640 S1380,560 1560,620"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="30"/>
+
+  <!-- Cyan vertical/spiral strokes — right side -->
+  <path class="scrib c" d="M1020,-40 C1060,120 980,320 1100,500 S1140,720 1040,920"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="36"/>
+  <path class="scrib c d2" d="M1180,-20 C1220,180 1120,380 1250,560 S1290,760 1180,940"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="30"/>
+  <path class="scrib c d3" d="M1090,-10 C1130,170 1220,340 1110,520 S1080,720 1160,910"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="26"/>
+  <!-- Cyan swirl bottom-right (around mug area) -->
+  <ellipse class="scrib c d4" cx="1220" cy="720" rx="120" ry="80" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="20"/>
+  <ellipse class="scrib c d5" cx="1230" cy="730" rx="150" ry="100" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="16"/>
+  <ellipse class="scrib c d6" cx="1215" cy="710" rx="95" ry="65" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="12"/>
+
+  <!-- Magenta accent strokes -->
+  <path class="scrib m" d="M-40,-30 C80,80 180,40 280,180 S240,340 140,290"
+        filter="url(#rough)" stroke="#ff00bb" stroke-width="20"/>
+  <path class="scrib m d2" d="M1150,750 C1270,700 1400,780 1480,730"
+        filter="url(#rough)" stroke="#ff00bb" stroke-width="18"/>
+</svg>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 1 — LANDING
+══════════════════════════════════════════════════════════ -->
+<section id="screen-landing" class="screen active" data-layer="landing">
+
+  <!-- ── FUN TITLE ── -->
+  <div class="landing-title" aria-label="How cooked is your brain? Take the depression test">
+    <div class="title-line-1">so... how cooked is</div>
+    <div class="title-line-2">
+      <span class="title-highlight">your brain</span>
+      <span class="title-q">?</span>
+    </div>
+    <div class="title-line-3">take the depression test <span class="title-arrow">→</span></div>
+    <!-- hand-drawn underline SVG -->
+    <svg class="title-underline" viewBox="0 0 340 18" preserveAspectRatio="none">
+      <defs>
+        <filter id="uf">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="8"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <path d="M 4,10 C 60,4 120,14 180,8 S 280,16 336,9"
+            fill="none" stroke="#ff40a0" stroke-width="5" stroke-linecap="round"
+            filter="url(#uf)" class="underline-path"/>
+    </svg>
+  </div>
+
+  <!-- LAPTOP SVG — hand-drawn style, exact replica -->
+  <div class="laptop-container" id="laptop-start" onclick="bootComputer()" role="button" tabindex="0" aria-label="Click to start the assessment">
+
+    <svg class="laptop-svg" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="sketch">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <clipPath id="screen-clip">
+          <rect x="60" y="18" width="358" height="238" rx="10"/>
+        </clipPath>
+      </defs>
+
+      <!-- ── LAPTOP LID (screen unit) ── -->
+      <!-- Outer yellow body of lid -->
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="#FFE600" filter="url(#sketch)"/>
+      <!-- Outer magenta outline - lid -->
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch)"/>
+      <!-- Inner magenta outline - lid -->
+      <path d="M 48,20 C 48,20 466,15 470,18 C 474,21 475,248 475,248 C 475,248 45,252 42,249 C 39,246 48,20 48,20 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- Screen background (off = dark navy) -->
+      <rect id="laptop-screen-rect" x="58" y="18" width="362" height="240" rx="8" fill="#0d0d28"/>
+
+      <!-- CRT scanlines overlay -->
+      <rect x="58" y="18" width="362" height="240" rx="8" fill="url(#scanlines)" opacity="0.08"/>
+
+      <!-- Screen content group -->
+      <g id="screen-off-content">
+        <text x="260" y="152" text-anchor="middle" font-family="Space Mono, monospace"
+              font-size="22" fill="rgba(200,200,220,0.45)" class="click-to-start-text">Click to start</text>
+      </g>
+      <g id="screen-on-content" opacity="0">
+        <text id="screen-line1" x="72" y="65" font-family="Space Mono, monospace"
+              font-size="11" fill="rgba(255,255,255,0.65)"></text>
+        <text id="screen-line2" x="72" y="95" font-family="Space Mono, monospace"
+              font-size="16" fill="#ffffff" font-weight="700"></text>
+        <rect id="screen-cursor-rect" x="72" y="108" width="10" height="16" fill="white" opacity="0"/>
+      </g>
+
+      <!-- Screen magenta border overlay -->
+      <rect x="58" y="18" width="362" height="240" rx="8"
+            fill="none" stroke="#ff40a0" stroke-width="3" filter="url(#sketch)"/>
+      <!-- Inner screen border -->
+      <rect x="70" y="26" width="338" height="224" rx="6"
+            fill="none" stroke="#ff40a0" stroke-width="1.5" filter="url(#sketch)" opacity="0.7"/>
+
+      <!-- ── HINGE ── -->
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="#e6cf00" filter="url(#sketch)"/>
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- ── LAPTOP BASE (keyboard) ── -->
+      <path d="M 0,276 C 0,276 520,272 520,276 C 520,280 514,434 510,436 C 506,438 10,438 6,436 C 2,434 0,276 0,276 Z"
+            fill="#FFE600" filter="url(#sketch)"/>
+      <path d="M 0,276 C 0,276 520,272 520,276 C 520,280 514,434 510,436 C 506,438 10,438 6,436 C 2,434 0,276 0,276 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch)"/>
+      <!-- Inner base border -->
+      <path d="M 16,284 C 16,284 504,280 504,284 C 504,288 499,422 496,424 C 493,426 22,426 18,424 C 14,422 16,284 16,284 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch)" opacity="0.7"/>
+
+      <!-- ── KEYBOARD KEYS (wavy rounded rects like original) ── -->
+      <!-- Row 1 — function keys area (small thin row) -->
+      <rect x="30" y="295" width="460" height="22" rx="8" fill="none" stroke="#ff40a0" stroke-width="2.2" filter="url(#sketch)"/>
+
+      <!-- Row 2 — main number row: big sinusoidal bumps -->
+      <!-- The original shows large wavy key-group outlines, like one continuous wavy path -->
+      <path d="M 30,330 L 30,360 Q 30,368 38,368 L 88,368 Q 96,368 96,360 L 96,330 Q 96,322 88,322 L 38,322 Q 30,322 30,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 104,330 L 104,360 Q 104,368 112,368 L 162,368 Q 170,368 170,360 L 170,330 Q 170,322 162,322 L 112,322 Q 104,322 104,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 178,330 L 178,360 Q 178,368 186,368 L 236,368 Q 244,368 244,360 L 244,330 Q 244,322 236,322 L 186,322 Q 178,322 178,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 252,330 L 252,360 Q 252,368 260,368 L 310,368 Q 318,368 318,360 L 318,330 Q 318,322 310,322 L 260,322 Q 252,322 252,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 326,330 L 326,360 Q 326,368 334,368 L 384,368 Q 392,368 392,360 L 392,330 Q 392,322 384,322 L 334,322 Q 326,322 326,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 400,330 L 400,360 Q 400,368 408,368 L 488,368 Q 496,368 496,360 L 496,330 Q 496,322 488,322 L 408,322 Q 400,322 400,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- Row 3 — larger keys sinusoidal row -->
+      <path d="M 30,378 L 30,414 Q 30,422 40,422 L 70,422 Q 80,422 80,414 L 80,378 Q 80,370 70,370 L 40,370 Q 30,370 30,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 88,378 L 88,414 Q 88,422 98,422 L 148,422 Q 158,422 158,414 L 158,378 Q 158,370 148,370 L 98,370 Q 88,370 88,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 166,378 L 166,414 Q 166,422 176,422 L 226,422 Q 236,422 236,414 L 236,378 Q 236,370 226,370 L 176,370 Q 166,370 166,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <!-- Spacebar -->
+      <path d="M 244,378 L 244,414 Q 244,422 252,422 L 390,422 Q 398,422 398,414 L 398,378 Q 398,370 390,370 L 252,370 Q 244,370 244,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 406,378 L 406,414 Q 406,422 414,422 L 496,422 Q 504,422 504,414 L 504,378 Q 504,370 496,370 L 414,370 Q 406,370 406,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+    </svg>
+
+    <!-- Floating "CLICK TO START" label below laptop -->
+    <div class="laptop-hint" id="laptop-hint">CLICK TO START</div>
+    
+  </div>
+
+  <!-- NOTEBOOK — top right, hand-drawn magenta, click opens About -->
+  <div class="obj-notebook parallax-obj" data-depth="0.03"
+       style="position:absolute;top:5%;right:3%;z-index:25;cursor:pointer"
+       onclick="openAbout()" title="About this test">
+    <svg viewBox="0 0 130 165" class="notebook-svg">
+      <defs>
+        <filter id="sk2">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="3"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <!-- spiral coils -->
+      <ellipse cx="12" cy="30"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="55"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="80"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="105" rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="130" rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <!-- notebook body -->
+      <path d="M 20,8 C 20,8 122,4 124,6 C 126,8 126,158 124,160 C 122,162 20,160 18,158 C 16,156 20,8 20,8 Z"
+            fill="#ff40a0" filter="url(#sk2)"/>
+      <path d="M 20,8 C 20,8 122,4 124,6 C 126,8 126,158 124,160 C 122,162 20,160 18,158 C 16,156 20,8 20,8 Z"
+            fill="none" stroke="#111" stroke-width="3.5" filter="url(#sk2)"/>
+      <text x="72" y="60"  text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">ABOUT</text>
+      <text x="72" y="90"  text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">THIS</text>
+      <text x="72" y="120" text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">TEST</text>
+    </svg>
+    <div style="text-align:center;font-family:'Space Mono',monospace;font-size:9px;color:#ff40a0;margin-top:4px;letter-spacing:1px;">[ click me ]</div>
+  </div>
+
+  <!-- ══ ABOUT MODAL ══════════════════════════════════════════ -->
+  <div id="about-modal" onclick="if(event.target===this)closeAbout()" style="
+    display:none;position:fixed;inset:0;z-index:9999;
+    background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);
+    align-items:center;justify-content:center;padding:20px;
+  ">
+    <div class="retro-window" style="max-width:600px;width:100%;max-height:88vh;display:flex;flex-direction:column;">
+
+      <div class="win-titlebar" style="flex-shrink:0">
+        <span class="win-title">ABOUT_THIS_TEST.exe</span>
+        <span class="win-close" onclick="closeAbout()" style="cursor:pointer">✕</span>
+      </div>
+
+      <div class="win-body" style="overflow-y:auto;flex:1;padding:20px 22px;line-height:1.7;">
+
+        <!-- Header -->
+        <div style="border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:16px">
+          <div style="font-size:11px;letter-spacing:2px;color:#888;margin-bottom:4px">// CLINICAL INSTRUMENT</div>
+          <div style="font-size:22px;font-weight:700;color:#111;line-height:1.2">Beck Depression Inventory</div>
+          <div style="font-size:12px;color:#555;margin-top:4px">BDI-II &nbsp;·&nbsp; Established 1961 &nbsp;·&nbsp; Revised 1996</div>
+        </div>
+
+        <!-- Origin -->
+        <div style="margin-bottom:16px">
+          <div class="section-label" style="margin-bottom:6px">// WHO MADE THIS?</div>
+          <p style="margin:0;font-size:12px;color:#222">
+            Developed by <strong>Dr. Aaron T. Beck</strong> — a psychiatrist at the University of Pennsylvania
+            and the founding father of <em>Cognitive Behavioral Therapy (CBT)</em>.
+            Originally published in 1961, the BDI has become one of the most widely used
+            psychometric tools in the history of mental health.
+          </p>
+        </div>
+
+        <!-- Stats grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+          <div style="border:2px solid #111;padding:10px 12px;background:#fffde7">
+            <div style="font-size:24px;font-weight:700;color:#111">2,000+</div>
+            <div style="font-size:10px;color:#555;letter-spacing:1px">PUBLISHED RESEARCH STUDIES</div>
+          </div>
+          <div style="border:2px solid #111;padding:10px 12px;background:#e8f5e9">
+            <div style="font-size:24px;font-weight:700;color:#111">50+ yrs</div>
+            <div style="font-size:10px;color:#555;letter-spacing:1px">OF CLINICAL VALIDATION</div>
+          </div>
+          <div style="border:2px solid #111;padding:10px 12px;background:#e3f2fd">
+            <div style="font-size:24px;font-weight:700;color:#111">100+</div>
+            <div style="font-size:10px;color:#555;letter-spacing:1px">COUNTRIES WHERE IT'S USED</div>
+          </div>
+          <div style="border:2px solid #111;padding:10px 12px;background:#fce4ec">
+            <div style="font-size:24px;font-weight:700;color:#111">21 qs</div>
+            <div style="font-size:10px;color:#555;letter-spacing:1px">EACH SCORED 0 – 3</div>
+          </div>
+        </div>
+
+        <!-- Who uses it -->
+        <div style="margin-bottom:16px">
+          <div class="section-label" style="margin-bottom:6px">// WHO USES IT?</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#222">
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:#ff40a0;font-size:16px;line-height:1">🧠</span>
+              <span><strong>Psychiatrists</strong> — used as a baseline before prescribing antidepressants and to track treatment response over time.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:#ff40a0;font-size:16px;line-height:1">🛋</span>
+              <span><strong>Therapists &amp; Counselors</strong> — administered at the start of CBT sessions to monitor symptom change week-by-week.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:#ff40a0;font-size:16px;line-height:1">🏥</span>
+              <span><strong>Hospitals &amp; Clinics</strong> — used in emergency departments and inpatient wards to screen for depression severity.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:#ff40a0;font-size:16px;line-height:1">🔬</span>
+              <span><strong>Researchers</strong> — the gold-standard outcome measure in thousands of depression, anxiety, and medication trials worldwide.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:#ff40a0;font-size:16px;line-height:1">📱</span>
+              <span><strong>Digital Health Apps</strong> — integrated into mental health platforms like BetterHelp, Woebot, and NHS digital pathways.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- How scoring works -->
+        <div style="margin-bottom:16px">
+          <div class="section-label" style="margin-bottom:6px">// HOW SCORING WORKS</div>
+          <p style="margin:0 0 8px;font-size:12px;color:#222">
+            Each of the 21 questions covers a different symptom of depression. You pick the statement
+            that best describes how you've been feeling <strong>over the past two weeks</strong>.
+            Each answer is scored 0 (not at all) to 3 (severe).
+          </p>
+          <div style="font-size:11px;color:#444;display:flex;flex-direction:column;gap:3px">
+            <div><span style="display:inline-block;width:60px;color:#15803d;font-weight:700">01–10</span> Normal ups &amp; downs</div>
+            <div><span style="display:inline-block;width:60px;color:#65a30d;font-weight:700">11–16</span> Mild mood disturbance</div>
+            <div><span style="display:inline-block;width:60px;color:#ca8a04;font-weight:700">17–20</span> Borderline clinical depression</div>
+            <div><span style="display:inline-block;width:60px;color:#c2410c;font-weight:700">21–30</span> Moderate depression</div>
+            <div><span style="display:inline-block;width:60px;color:#dc2626;font-weight:700">31–40</span> Severe depression</div>
+            <div><span style="display:inline-block;width:60px;color:#991b1b;font-weight:700">40–63</span> Extreme depression</div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div style="background:#fff8e1;border:1.5px solid #f0b800;padding:10px 12px;font-size:11px;color:#555;line-height:1.6">
+          ⚠️ <strong>This is a screening tool, not a clinical diagnosis.</strong> A high score means you
+          should talk to a qualified mental health professional — it does not confirm you have depression.
+          If you're struggling, please reach out: <strong>iCall India: 9152987821</strong> &nbsp;·&nbsp;
+          <strong>Vandrevala Foundation: 1860-2662-345</strong>
+        </div>
+
+      </div>
+
+      <div style="flex-shrink:0;padding:12px 22px;border-top:2px solid #111;display:flex;justify-content:flex-end">
+        <button class="retro-btn primary" onclick="closeAbout()">[ GOT IT → ]</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COFFEE MUG — bottom right, hand-drawn cyan -->
+  <div class="obj-mug parallax-obj" data-depth="0.05" style="position:absolute;bottom:3%;right:3%;z-index:25">
+    <svg viewBox="0 0 160 160" class="mug-svg" style="transition: transform 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='rotate(-15deg)'" onmouseout="this.style.transform='rotate(0deg)'">
+      <defs>
+        <filter id="sk3">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="3.5"/>
+        </filter>
+      </defs>
+      <!-- mug handle -->
+      <path d="M 18,75 C 4,75 0,90 0,100 C 0,110 4,125 18,125" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" filter="url(#sk3)"/>
+      <!-- mug body -->
+      <path d="M 18,52 C 18,52 110,48 112,52 C 114,56 114,150 110,152 C 106,154 20,154 16,150 C 12,146 18,52 18,52 Z"
+            fill="#4dd9f0" filter="url(#sk3)"/>
+      <path d="M 18,52 C 18,52 110,48 112,52 C 114,56 114,150 110,152 C 106,154 20,154 16,150 C 12,146 18,52 18,52 Z"
+            fill="none" stroke="#111" stroke-width="4" filter="url(#sk3)"/>
+      <!-- coffee liquid on top -->
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="#3a1a0a" filter="url(#sk3)"/>
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="none" stroke="#111" stroke-width="2.5" filter="url(#sk3)"/>
+      <!-- text -->
+      <text x="65" y="105" text-anchor="middle" font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#111">21 QUES</text>
+      <text x="65" y="132" text-anchor="middle" font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#111">TIONS</text>
+    </svg>
+  </div>
+
+  <!-- EMAIL BADGE bottom-left -->
+  <div class="email-badge parallax-obj" data-depth="0.02">
+    <span>✉</span> clinically validated
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 2 — QUIZ
+══════════════════════════════════════════════════════════ -->
+<section id="screen-quiz" class="screen">
+
+  <!-- Small laptop (left) -->
+  <div class="quiz-laptop-wrap">
+    <svg class="laptop-svg quiz-laptop-svg" viewBox="0 0 520 440">
+      <defs>
+        <filter id="sketch-q">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.5"/>
+        </filter>
+      </defs>
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="#FFE600" filter="url(#sketch-q)"/>
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch-q)"/>
+      <path d="M 48,20 C 48,20 466,15 470,18 C 474,21 475,248 475,248 C 475,248 45,252 42,249 C 39,246 48,20 48,20 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)" opacity="0.7"/>
+      <!-- Screen -->
+      <rect id="quiz-screen-rect" x="58" y="18" width="362" height="240" rx="8" fill="#1a1aff"/>
+      <rect x="58" y="18" width="362" height="240" rx="8" fill="none" stroke="#ff40a0" stroke-width="3" filter="url(#sketch-q)"/>
+      <rect x="70" y="26" width="338" height="224" rx="6" fill="none" stroke="#ff40a0" stroke-width="1.5" filter="url(#sketch-q)" opacity="0.7"/>
+      <!-- Screen text -->
+      <text id="q-screen-qnum" x="72" y="55" font-family="Space Mono,monospace" font-size="10" fill="rgba(255,255,255,0.6)">Q01 // MOOD</text>
+      <text id="q-screen-title" x="72" y="85" font-family="Space Mono,monospace" font-size="16" fill="#ffffff" font-weight="700"></text>
+      <rect id="q-cursor" x="72" y="98" width="10" height="16" fill="white"/>
+      <!-- Hinge -->
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="#e6cf00" filter="url(#sketch-q)"/>
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch-q)"/>
+      <!-- Base -->
+      <path d="M 0,276 C 0,276 520,272 520,276 L 514,434 C 514,438 6,438 6,434 Z"
+            fill="#FFE600" filter="url(#sketch-q)"/>
+      <path d="M 0,276 C 0,276 520,272 520,276 L 514,434 C 514,438 6,438 6,434 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch-q)"/>
+      <rect x="30" y="295" width="460" height="22" rx="8" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <!-- Key rows -->
+      <path d="M30,325 h66 q8,0 8,8 v32 q0,8-8,8 H38 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M108,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M186,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M264,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M342,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M420,325 h78 q8,0 8,8 v32 q0,8-8,8 h-70 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <!-- Row 3 -->
+      <path d="M30,372 h46 q8,0 8,8 v38 q0,8-8,8 H38 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M88,372 h62 q8,0 8,8 v38 q0,8-8,8 H96 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M162,372 h62 q8,0 8,8 v38 q0,8-8,8 h-54 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M236,372 h144 q8,0 8,8 v38 q0,8-8,8 H244 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M392,372 h106 q8,0 8,8 v38 q0,8-8,8 H400 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+    </svg>
+  </div>
+
+  <!-- Question window -->
+  <div class="retro-window quiz-window" id="quiz-window">
+    <div class="win-titlebar">
+      <span class="win-title" id="win-title">QUESTION_01.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body">
+      <div class="q-category-tag" id="q-category-tag">Mood</div>
+      <div class="options-grid" id="options-grid"></div>
+      <div class="win-nav">
+        <button class="retro-btn" id="prev-btn" onclick="prevQuestion()">[ ← PREV ]</button>
+        <span class="progress-pill" id="progress-pill">0/21</span>
+        <button class="retro-btn" id="next-btn" onclick="nextQuestion()" disabled>[ NEXT → ]</button>
+        <button class="retro-btn accent hidden" id="submit-btn" onclick="submitAssessment()">[ VIEW RESULTS → ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score window -->
+  <div class="retro-window score-window" id="score-window">
+    <div class="win-titlebar small">
+      <span class="win-title">SCORE.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body score-body">
+      <div class="score-big" id="score-display">—</div>
+      <div class="score-sub">running score</div>
+      <div class="qdot-grid" id="qdot-grid"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 3 — RESULTS
+══════════════════════════════════════════════════════════ -->
+<section id="screen-results" class="screen">
+
+  <div class="results-mug-wrap">
+    <svg viewBox="0 0 160 160" class="mug-svg results-mug-svg">
+      <defs>
+        <filter id="sk4">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="11"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <ellipse cx="95" cy="100" rx="72" ry="50" fill="none" stroke="#00c8e0" stroke-width="12" filter="url(#sk4)" opacity="0.5"/>
+      <path d="M 18,75 C 4,75 0,90 0,100 C 0,110 4,125 18,125" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" filter="url(#sk4)"/>
+      <path d="M 18,52 L 110,48 L 114,152 L 16,154 Z" fill="#4dd9f0" filter="url(#sk4)"/>
+      <path d="M 18,52 L 110,48 L 114,152 L 16,154 Z" fill="none" stroke="#111" stroke-width="4" filter="url(#sk4)"/>
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="#3a1a0a" filter="url(#sk4)"/>
+      <text x="65" y="110" text-anchor="middle" font-family="Caveat,cursive" font-size="24" font-weight="700" fill="#111">DONE!</text>
+    </svg>
+  </div>
+
+  <div class="windows-container" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; max-width: 1200px; width: 100%; justify-content: center; align-items: flex-start;">
+    <div class="retro-window results-window" id="results-window" style="flex: 1 1 500px; max-width: 680px;">
+    <div class="win-titlebar">
+      <span class="win-title">RESULTS.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body results-body">
+
+      <div class="results-top-row">
+        <div class="result-score-block">
+          <div class="big-score" id="big-score">00</div>
+          <div class="score-denom">/ 63</div>
+        </div>
+        <div class="result-date" id="result-date"></div>
+      </div>
+
+      <div class="severity-band" id="severity-band">
+        <div class="sev-emoji" id="sev-emoji"></div>
+        <div class="sev-text">
+          <div class="sev-label" id="sev-label"></div>
+          <div class="sev-desc"  id="sev-desc"></div>
+        </div>
+      </div>
+
+      <!-- Score bar -->
+      <div class="bar-row">
+        <span class="bar-cap">0</span>
+        <div class="bar-track"><div class="bar-fill" id="bar-fill"></div></div>
+        <span class="bar-cap">63</span>
+      </div>
+      <div class="bar-legend" style="position: relative; height: 15px; display: block;">
+        <span style="color:#15803d; position: absolute; left: 8.3%; transform: translateX(-50%);">NORMAL</span>
+        <span style="color:#65a30d; position: absolute; left: 21.4%; transform: translateX(-50%);">MILD</span>
+        <span style="color:#ca8a04; position: absolute; left: 29.3%; transform: translateX(-50%);">BORDER</span>
+        <span style="color:#c2410c; position: absolute; left: 40.4%; transform: translateX(-50%);">MODERATE</span>
+        <span style="color:#dc2626; position: absolute; left: 56.3%; transform: translateX(-50%);">SEVERE</span>
+        <span style="color:#7f1d1d; position: absolute; left: 82.5%; transform: translateX(-50%);">EXTREME</span>
+      </div>
+
+      <!-- Category breakdown -->
+      <div class="section-label">// CATEGORY BREAKDOWN</div>
+      <div id="breakdown-rows"></div>
+
+      <!-- Full response review -->
+      <div class="section-label" style="margin-top:16px">// YOUR RESPONSES</div>
+      <button class="retro-btn full" onclick="toggleReview(this)">[ SHOW ALL RESPONSES ]</button>
+      <div class="review-list hidden" id="review-list"></div>
+
+      <!-- Interpretation -->
+      <div class="section-label" style="margin-top:16px">// SCORE GUIDE</div>
+      <div class="interp-rows">
+        <div class="irow"><span class="irange">01–10</span><span class="ilvl" style="color:#15803d">Normal ups &amp; downs</span></div>
+        <div class="irow"><span class="irange">11–16</span><span class="ilvl" style="color:#65a30d">Mild mood disturbance</span></div>
+        <div class="irow"><span class="irange">17–20</span><span class="ilvl" style="color:#ca8a04">Borderline clinical depression</span></div>
+        <div class="irow"><span class="irange">21–30</span><span class="ilvl" style="color:#c2410c">Moderate depression</span></div>
+        <div class="irow"><span class="irange">31–40</span><span class="ilvl" style="color:#dc2626">Severe depression</span></div>
+        <div class="irow"><span class="irange">40–63</span><span class="ilvl" style="color:#991b1b;font-weight:700">Extreme depression</span></div>
+      </div>
+
+      <div class="result-actions no-print" style="margin-top: 16px;">
+        <button class="retro-btn primary" onclick="retake()">[ ↺ RETAKE ]</button>
+        <button class="retro-btn" onclick="window.print()">[ ⎙ PRINT ]</button>
+      </div>
+
+      <p class="results-disclaimer">// This tool does not constitute a clinical diagnosis.<br/>// Please consult a qualified mental health professional.</p>
+    </div>
+  </div>
+
+  <!-- SHARE.exe Window -->
+  <div class="retro-window share-window no-print" id="share-window" style="animation-delay: 0.1s; flex: 1 1 300px; max-width: 400px;">
+    <div class="win-titlebar">
+      <span class="win-title">SHARE.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body results-body">
+      <div style="font-size: 14px; font-weight: 700; color: #111; margin-bottom: 12px;">Find out if your friend is in depression or not.</div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="retro-btn primary" onclick="navigator.clipboard.writeText(window.location.href); alert('Website link copied to clipboard!');">
+          [ SHARE WEBSITE ]
+        </button>
+        <button class="retro-btn" style="background: var(--magenta); color: #fff; border-color: var(--ink);" onclick="shareReport()">
+          [ SHARE REPORT ]
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<script src="app.js"></script>
+<script>
+function openAbout() {
+  var m = document.getElementById('about-modal');
+  m.style.display = 'flex';
+  // small delay so transition works
+  requestAnimationFrame(function(){
+    m.style.opacity = '0';
+    m.style.transition = 'opacity 0.2s';
+    requestAnimationFrame(function(){ m.style.opacity = '1'; });
+  });
+  document.body.style.overflow = 'hidden';
+}
+function closeAbout() {
+  var m = document.getElementById('about-modal');
+  m.style.opacity = '0';
+  setTimeout(function(){ m.style.display = 'none'; document.body.style.overflow = ''; }, 200);
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeAbout();
+});
+</script>
+
+<script>
+/* ── DRAGGABLE WINDOWS ──────────────────────────────────────── */
+(function() {
+  var topZIndex = 50; // Global z-index tracker
+
+  function makeDraggable(win) {
+    // Bring to front on any click inside the window
+    win.addEventListener('mousedown', function() {
+      win.style.zIndex = ++topZIndex;
+    });
+    win.addEventListener('touchstart', function() {
+      win.style.zIndex = ++topZIndex;
+    }, { passive: true });
+
+    var titlebar = win.querySelector('.win-titlebar');
+    if (!titlebar) return;
+
+    var isDragging = false;
+    var startX, startY, origLeft, origTop;
+
+    // On first drag, we NO LONGER convert the window to position:fixed
+    // We just leave it relative/fixed so it doesn't break document flow!
+
+    titlebar.addEventListener('mousedown', function(e) {
+      // Don't drag when clicking the close button
+      if (e.target.classList.contains('win-close')) return;
+      e.preventDefault();
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      var comp = window.getComputedStyle(win);
+      origLeft = parseFloat(comp.left) || 0;
+      origTop  = parseFloat(comp.top)  || 0;
+      win.classList.add('dragging');
+      win.style.zIndex = ++topZIndex;
+    });
+
+    // Touch support
+    titlebar.addEventListener('touchstart', function(e) {
+      if (e.target.classList.contains('win-close')) return;
+      var t = e.touches[0];
+      isDragging = true;
+      startX = t.clientX; startY = t.clientY;
+      var comp = window.getComputedStyle(win);
+      origLeft = parseFloat(comp.left) || 0;
+      origTop  = parseFloat(comp.top)  || 0;
+      win.classList.add('dragging');
+      win.style.zIndex = ++topZIndex;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      win.style.left = (origLeft + dx) + 'px';
+      win.style.top  = (origTop  + dy) + 'px';
+    });
+
+    document.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      var t = e.touches[0];
+      win.style.left = (origLeft + t.clientX - startX) + 'px';
+      win.style.top  = (origTop  + t.clientY - startY) + 'px';
+    }, { passive: true });
+
+    function stopDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      win.classList.remove('dragging');
+    }
+    document.addEventListener('mouseup',  stopDrag);
+    document.addEventListener('touchend', stopDrag);
+  }
+
+  // Apply draggable to all retro-windows
+  function initAll() {
+    document.querySelectorAll('.retro-window').forEach(makeDraggable);
+  }
+
+  // Run now and watch for quiz windows appearing later
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
+  }
+
+  var obs = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      m.addedNodes.forEach(function(n) {
+        if (n.nodeType === 1) {
+          if (n.classList && n.classList.contains('retro-window')) makeDraggable(n);
+          n.querySelectorAll && n.querySelectorAll('.retro-window').forEach(makeDraggable);
+        }
+      });
+    });
+  });
+  obs.observe(document.body, { childList: true, subtree: true });
+})();
+
+/* ── □ BUTTON → 180° TILT ───────────────────────────────────── */
+document.addEventListener('click', function(e) {
+  var btn = e.target;
+  if (!btn.classList.contains('win-close')) return;
+  
+  // Don't tilt the About modal close button
+  var win = btn.closest('.retro-window');
+  if (!win || win.id === 'about-modal' || win.closest('#about-modal')) return;
+
+  var isTilted = win.dataset.tilted === '1';
+  
+  // The 'window-slam' animation overrides transforms, so we must clear it
+  win.style.animation = 'none';
+  
+  win.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+  win.style.transform  = isTilted ? '' : 'rotate(180deg)';
+  win.dataset.tilted   = isTilted ? '0' : '1';
+});
+</script>
+</body>
+</html>

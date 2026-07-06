@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Beck's Depression Inventory – a clinically-validated self-assessment tool."/>
+  <title>BDI.exe — Beck's Depression Inventory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══ GLOBAL NAV ═══════════════════════════════════════════ -->
+<nav class="global-nav">
+  <a class="nav-link" href="#">
+    <span class="nav-icon">✉</span> bdi@assessment.app
+  </a>
+</nav>
+
+<!-- ══ CODE BG ══════════════════════════════════════════════ -->
+<div class="code-bg" aria-hidden="true">
+  <span>if(prompt('Program still working?'))=>{if(prompt('AdSense')==='nope') throw new Error('bug.')}</span>
+  <span>AllWorkAndNoPlayMakesBDIA()=>{while(!working){new Error('bug.')};100}</span>
+  <span>cd node_modules &amp;&amp; npm start ... run nope &amp;&amp; npm start ... run nope &amp;&amp; npm start</span>
+  <span>vocabulator ... mic ... AllWorkAndNoPlayMakesBryantADullBoy() ... Error('bug')</span>
+  <span>if(prompt('Program still working?'))=>{if(prompt('AdSense')==='nope') throw new Error('bug.')}</span>
+  <span>AllWorkAndNoPlayMakesA()=>{while(!working){new Error('bug.')};100} ... nope ... throw</span>
+  <span>cd node_modules &amp;&amp; npm start ... run nope &amp;&amp; npm start ... run nope &amp;&amp; npm start</span>
+  <span>if(prompt('still working?'))=>AllWorkAndNoPlayMakesADullBoy()=>{while(!working)} ... 100</span>
+  <span>vocabulator ... mic ... Error('nope') throw new Error('bug.') ... 100 ... nope ... working</span>
+  <span>AllWorkAndNoPlay()=>{while(!working){new Error('bug.')}} ... 100 ... nope ... throw</span>
+</div>
+
+<!-- ══ SCRIBBLE LAYER ════════════════════════════════════════ -->
+<svg class="scribble-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rough2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Fat green strokes — diagonal, like bryantcodes -->
+  <path class="scrib g" d="M-100,120 C150,60 400,250 650,100 S1000,30 1200,160 S1400,80 1550,140"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="38"/>
+  <path class="scrib g d2" d="M-80,380 C200,310 450,480 700,340 S980,200 1250,360 S1480,280 1600,380"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="34"/>
+  <path class="scrib g d3" d="M-60,620 C180,570 380,710 630,590 S880,520 1130,640 S1380,560 1560,620"
+        filter="url(#rough)" stroke="#00ff44" stroke-width="30"/>
+
+  <!-- Cyan vertical/spiral strokes — right side -->
+  <path class="scrib c" d="M1020,-40 C1060,120 980,320 1100,500 S1140,720 1040,920"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="36"/>
+  <path class="scrib c d2" d="M1180,-20 C1220,180 1120,380 1250,560 S1290,760 1180,940"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="30"/>
+  <path class="scrib c d3" d="M1090,-10 C1130,170 1220,340 1110,520 S1080,720 1160,910"
+        filter="url(#rough2)" stroke="#00e5ff" stroke-width="26"/>
+  <!-- Cyan swirl bottom-right (around mug area) -->
+  <ellipse class="scrib c d4" cx="1220" cy="720" rx="120" ry="80" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="20"/>
+  <ellipse class="scrib c d5" cx="1230" cy="730" rx="150" ry="100" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="16"/>
+  <ellipse class="scrib c d6" cx="1215" cy="710" rx="95" ry="65" fill="none"
+           filter="url(#rough2)" stroke="#00e5ff" stroke-width="12"/>
+
+  <!-- Magenta accent strokes -->
+  <path class="scrib m" d="M-40,-30 C80,80 180,40 280,180 S240,340 140,290"
+        filter="url(#rough)" stroke="#ff00bb" stroke-width="20"/>
+  <path class="scrib m d2" d="M1150,750 C1270,700 1400,780 1480,730"
+        filter="url(#rough)" stroke="#ff00bb" stroke-width="18"/>
+</svg>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 1 — LANDING
+══════════════════════════════════════════════════════════ -->
+<section id="screen-landing" class="screen active" data-layer="landing">
+
+  <!-- ── FUN TITLE ── -->
+  <div class="landing-title" aria-label="How cooked is your brain? Take the depression test">
+    <div class="title-line-1">so... how cooked is</div>
+    <div class="title-line-2">
+      <span class="title-highlight">your brain</span>
+      <span class="title-q">?</span>
+    </div>
+    <div class="title-line-3">take the depression test <span class="title-arrow">→</span></div>
+    <!-- hand-drawn underline SVG -->
+    <svg class="title-underline" viewBox="0 0 340 18" preserveAspectRatio="none">
+      <defs>
+        <filter id="uf">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="8"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <path d="M 4,10 C 60,4 120,14 180,8 S 280,16 336,9"
+            fill="none" stroke="#ff40a0" stroke-width="5" stroke-linecap="round"
+            filter="url(#uf)" class="underline-path"/>
+    </svg>
+  </div>
+
+  <!-- LAPTOP SVG — hand-drawn style, exact replica -->
+  <div class="laptop-container" id="laptop-start" onclick="bootComputer()" role="button" tabindex="0" aria-label="Click to start the assessment">
+
+    <svg class="laptop-svg" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="sketch">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <clipPath id="screen-clip">
+          <rect x="60" y="18" width="358" height="238" rx="10"/>
+        </clipPath>
+      </defs>
+
+      <!-- ── LAPTOP LID (screen unit) ── -->
+      <!-- Outer yellow body of lid -->
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="#FFE600" filter="url(#sketch)"/>
+      <!-- Outer magenta outline - lid -->
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch)"/>
+      <!-- Inner magenta outline - lid -->
+      <path d="M 48,20 C 48,20 466,15 470,18 C 474,21 475,248 475,248 C 475,248 45,252 42,249 C 39,246 48,20 48,20 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- Screen background (off = dark navy) -->
+      <rect id="laptop-screen-rect" x="58" y="18" width="362" height="240" rx="8" fill="#0d0d28"/>
+
+      <!-- CRT scanlines overlay -->
+      <rect x="58" y="18" width="362" height="240" rx="8" fill="url(#scanlines)" opacity="0.08"/>
+
+      <!-- Screen content group -->
+      <g id="screen-off-content">
+        <text x="260" y="152" text-anchor="middle" font-family="Space Mono, monospace"
+              font-size="22" fill="rgba(200,200,220,0.45)" class="click-to-start-text">Click to start</text>
+      </g>
+      <g id="screen-on-content" opacity="0">
+        <text id="screen-line1" x="72" y="65" font-family="Space Mono, monospace"
+              font-size="11" fill="rgba(255,255,255,0.65)"></text>
+        <text id="screen-line2" x="72" y="95" font-family="Space Mono, monospace"
+              font-size="16" fill="#ffffff" font-weight="700"></text>
+        <rect id="screen-cursor-rect" x="72" y="108" width="10" height="16" fill="white" opacity="0"/>
+      </g>
+
+      <!-- Screen magenta border overlay -->
+      <rect x="58" y="18" width="362" height="240" rx="8"
+            fill="none" stroke="#ff40a0" stroke-width="3" filter="url(#sketch)"/>
+      <!-- Inner screen border -->
+      <rect x="70" y="26" width="338" height="224" rx="6"
+            fill="none" stroke="#ff40a0" stroke-width="1.5" filter="url(#sketch)" opacity="0.7"/>
+
+      <!-- ── HINGE ── -->
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="#e6cf00" filter="url(#sketch)"/>
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- ── LAPTOP BASE (keyboard) ── -->
+      <path d="M 0,276 C 0,276 520,272 520,276 C 520,280 514,434 510,436 C 506,438 10,438 6,436 C 2,434 0,276 0,276 Z"
+            fill="#FFE600" filter="url(#sketch)"/>
+      <path d="M 0,276 C 0,276 520,272 520,276 C 520,280 514,434 510,436 C 506,438 10,438 6,436 C 2,434 0,276 0,276 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch)"/>
+      <!-- Inner base border -->
+      <path d="M 16,284 C 16,284 504,280 504,284 C 504,288 499,422 496,424 C 493,426 22,426 18,424 C 14,422 16,284 16,284 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch)" opacity="0.7"/>
+
+      <!-- ── KEYBOARD KEYS (wavy rounded rects like original) ── -->
+      <!-- Row 1 — function keys area (small thin row) -->
+      <rect x="30" y="295" width="460" height="22" rx="8" fill="none" stroke="#ff40a0" stroke-width="2.2" filter="url(#sketch)"/>
+
+      <!-- Row 2 — main number row: big sinusoidal bumps -->
+      <!-- The original shows large wavy key-group outlines, like one continuous wavy path -->
+      <path d="M 30,330 L 30,360 Q 30,368 38,368 L 88,368 Q 96,368 96,360 L 96,330 Q 96,322 88,322 L 38,322 Q 30,322 30,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 104,330 L 104,360 Q 104,368 112,368 L 162,368 Q 170,368 170,360 L 170,330 Q 170,322 162,322 L 112,322 Q 104,322 104,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 178,330 L 178,360 Q 178,368 186,368 L 236,368 Q 244,368 244,360 L 244,330 Q 244,322 236,322 L 186,322 Q 178,322 178,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 252,330 L 252,360 Q 252,368 260,368 L 310,368 Q 318,368 318,360 L 318,330 Q 318,322 310,322 L 260,322 Q 252,322 252,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 326,330 L 326,360 Q 326,368 334,368 L 384,368 Q 392,368 392,360 L 392,330 Q 392,322 384,322 L 334,322 Q 326,322 326,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 400,330 L 400,360 Q 400,368 408,368 L 488,368 Q 496,368 496,360 L 496,330 Q 496,322 488,322 L 408,322 Q 400,322 400,330 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+
+      <!-- Row 3 — larger keys sinusoidal row -->
+      <path d="M 30,378 L 30,414 Q 30,422 40,422 L 70,422 Q 80,422 80,414 L 80,378 Q 80,370 70,370 L 40,370 Q 30,370 30,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 88,378 L 88,414 Q 88,422 98,422 L 148,422 Q 158,422 158,414 L 158,378 Q 158,370 148,370 L 98,370 Q 88,370 88,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 166,378 L 166,414 Q 166,422 176,422 L 226,422 Q 236,422 236,414 L 236,378 Q 236,370 226,370 L 176,370 Q 166,370 166,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <!-- Spacebar -->
+      <path d="M 244,378 L 244,414 Q 244,422 252,422 L 390,422 Q 398,422 398,414 L 398,378 Q 398,370 390,370 L 252,370 Q 244,370 244,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+      <path d="M 406,378 L 406,414 Q 406,422 414,422 L 496,422 Q 504,422 504,414 L 504,378 Q 504,370 496,370 L 414,370 Q 406,370 406,378 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch)"/>
+    </svg>
+
+    <!-- Floating "CLICK TO START" label below laptop -->
+    <div class="laptop-hint" id="laptop-hint">CLICK TO START</div>
+  </div>
+
+  <!-- NOTEBOOK — top right, hand-drawn magenta -->
+  <div class="obj-notebook parallax-obj" data-depth="0.03" style="position:absolute;top:5%;right:3%;z-index:25">
+    <svg viewBox="0 0 130 165" class="notebook-svg">
+      <defs>
+        <filter id="sk2">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="3"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <!-- spiral coils -->
+      <ellipse cx="12" cy="30"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="55"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="80"  rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="105" rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <ellipse cx="12" cy="130" rx="9" ry="7" fill="none" stroke="#111" stroke-width="3" filter="url(#sk2)"/>
+      <!-- notebook body -->
+      <path d="M 20,8 C 20,8 122,4 124,6 C 126,8 126,158 124,160 C 122,162 20,160 18,158 C 16,156 20,8 20,8 Z"
+            fill="#ff40a0" filter="url(#sk2)"/>
+      <path d="M 20,8 C 20,8 122,4 124,6 C 126,8 126,158 124,160 C 122,162 20,160 18,158 C 16,156 20,8 20,8 Z"
+            fill="none" stroke="#111" stroke-width="3.5" filter="url(#sk2)"/>
+      <text x="72" y="60"  text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">ABOUT</text>
+      <text x="72" y="90"  text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">THIS</text>
+      <text x="72" y="120" text-anchor="middle" font-family="Caveat,cursive" font-size="23" font-weight="700" fill="#111">TEST</text>
+    </svg>
+  </div>
+
+  <!-- COFFEE MUG — bottom right, hand-drawn cyan -->
+  <div class="obj-mug parallax-obj" data-depth="0.05" style="position:absolute;bottom:3%;right:3%;z-index:25">
+    <svg viewBox="0 0 160 160" class="mug-svg">
+      <defs>
+        <filter id="sk3">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="3.5"/>
+        </filter>
+      </defs>
+      <!-- swirl circles around mug -->
+      <ellipse cx="95" cy="100" rx="72" ry="50" fill="none" stroke="#00c8e0" stroke-width="14" filter="url(#sk3)" opacity="0.6"/>
+      <ellipse cx="95" cy="100" rx="88" ry="62" fill="none" stroke="#00c8e0" stroke-width="10" filter="url(#sk3)" opacity="0.4"/>
+      <!-- mug handle -->
+      <path d="M 18,75 C 4,75 0,90 0,100 C 0,110 4,125 18,125" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" filter="url(#sk3)"/>
+      <!-- mug body -->
+      <path d="M 18,52 C 18,52 110,48 112,52 C 114,56 114,150 110,152 C 106,154 20,154 16,150 C 12,146 18,52 18,52 Z"
+            fill="#4dd9f0" filter="url(#sk3)"/>
+      <path d="M 18,52 C 18,52 110,48 112,52 C 114,56 114,150 110,152 C 106,154 20,154 16,150 C 12,146 18,52 18,52 Z"
+            fill="none" stroke="#111" stroke-width="4" filter="url(#sk3)"/>
+      <!-- coffee liquid on top -->
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="#3a1a0a" filter="url(#sk3)"/>
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="none" stroke="#111" stroke-width="2.5" filter="url(#sk3)"/>
+      <!-- text -->
+      <text x="65" y="105" text-anchor="middle" font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#111">21 QUES</text>
+      <text x="65" y="132" text-anchor="middle" font-family="Caveat,cursive" font-size="22" font-weight="700" fill="#111">TIONS</text>
+    </svg>
+  </div>
+
+  <!-- EMAIL BADGE bottom-left -->
+  <div class="email-badge parallax-obj" data-depth="0.02">
+    <span>✉</span> clinically validated
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 2 — QUIZ
+══════════════════════════════════════════════════════════ -->
+<section id="screen-quiz" class="screen">
+
+  <!-- Small laptop (left) -->
+  <div class="quiz-laptop-wrap">
+    <svg class="laptop-svg quiz-laptop-svg" viewBox="0 0 520 440">
+      <defs>
+        <filter id="sketch-q">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="1"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.5"/>
+        </filter>
+      </defs>
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="#FFE600" filter="url(#sketch-q)"/>
+      <path d="M 28,8 C 28,8 488,2 492,6 C 496,10 498,260 498,260 C 498,260 26,265 22,261 C 18,257 28,8 28,8 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch-q)"/>
+      <path d="M 48,20 C 48,20 466,15 470,18 C 474,21 475,248 475,248 C 475,248 45,252 42,249 C 39,246 48,20 48,20 Z"
+            fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)" opacity="0.7"/>
+      <!-- Screen -->
+      <rect id="quiz-screen-rect" x="58" y="18" width="362" height="240" rx="8" fill="#1a1aff"/>
+      <rect x="58" y="18" width="362" height="240" rx="8" fill="none" stroke="#ff40a0" stroke-width="3" filter="url(#sketch-q)"/>
+      <rect x="70" y="26" width="338" height="224" rx="6" fill="none" stroke="#ff40a0" stroke-width="1.5" filter="url(#sketch-q)" opacity="0.7"/>
+      <!-- Screen text -->
+      <text id="q-screen-qnum" x="72" y="55" font-family="Space Mono,monospace" font-size="10" fill="rgba(255,255,255,0.6)">Q01 // MOOD</text>
+      <text id="q-screen-title" x="72" y="85" font-family="Space Mono,monospace" font-size="16" fill="#ffffff" font-weight="700"></text>
+      <rect id="q-cursor" x="72" y="98" width="10" height="16" fill="white"/>
+      <!-- Hinge -->
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="#e6cf00" filter="url(#sketch-q)"/>
+      <rect x="8" y="262" width="504" height="14" rx="3" fill="none" stroke="#ff40a0" stroke-width="2.5" filter="url(#sketch-q)"/>
+      <!-- Base -->
+      <path d="M 0,276 C 0,276 520,272 520,276 L 514,434 C 514,438 6,438 6,434 Z"
+            fill="#FFE600" filter="url(#sketch-q)"/>
+      <path d="M 0,276 C 0,276 520,272 520,276 L 514,434 C 514,438 6,438 6,434 Z"
+            fill="none" stroke="#ff40a0" stroke-width="4" filter="url(#sketch-q)"/>
+      <rect x="30" y="295" width="460" height="22" rx="8" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <!-- Key rows -->
+      <path d="M30,325 h66 q8,0 8,8 v32 q0,8-8,8 H38 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M108,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M186,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M264,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M342,325 h66 q8,0 8,8 v32 q0,8-8,8 h-58 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M420,325 h78 q8,0 8,8 v32 q0,8-8,8 h-70 q-8,0-8-8 v-32 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <!-- Row 3 -->
+      <path d="M30,372 h46 q8,0 8,8 v38 q0,8-8,8 H38 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M88,372 h62 q8,0 8,8 v38 q0,8-8,8 H96 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M162,372 h62 q8,0 8,8 v38 q0,8-8,8 h-54 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M236,372 h144 q8,0 8,8 v38 q0,8-8,8 H244 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+      <path d="M392,372 h106 q8,0 8,8 v38 q0,8-8,8 H400 q-8,0-8-8 v-38 q0-8 8-8 Z" fill="none" stroke="#ff40a0" stroke-width="2" filter="url(#sketch-q)"/>
+    </svg>
+  </div>
+
+  <!-- Question window -->
+  <div class="retro-window quiz-window" id="quiz-window">
+    <div class="win-titlebar">
+      <span class="win-title" id="win-title">QUESTION_01.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body">
+      <div class="q-category-tag" id="q-category-tag">Mood</div>
+      <div class="options-grid" id="options-grid"></div>
+      <div class="win-nav">
+        <button class="retro-btn" id="prev-btn" onclick="prevQuestion()">[ ← PREV ]</button>
+        <span class="progress-pill" id="progress-pill">0/21</span>
+        <button class="retro-btn" id="next-btn" onclick="nextQuestion()" disabled>[ NEXT → ]</button>
+        <button class="retro-btn accent hidden" id="submit-btn" onclick="submitAssessment()">[ VIEW RESULTS → ]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Score window -->
+  <div class="retro-window score-window" id="score-window">
+    <div class="win-titlebar small">
+      <span class="win-title">SCORE.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body score-body">
+      <div class="score-big" id="score-display">—</div>
+      <div class="score-sub">running score</div>
+      <div class="qdot-grid" id="qdot-grid"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SCREEN 3 — RESULTS
+══════════════════════════════════════════════════════════ -->
+<section id="screen-results" class="screen">
+
+  <div class="results-mug-wrap">
+    <svg viewBox="0 0 160 160" class="mug-svg results-mug-svg">
+      <defs>
+        <filter id="sk4">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="11"/>
+          <feDisplacementMap in="SourceGraphic" scale="3"/>
+        </filter>
+      </defs>
+      <ellipse cx="95" cy="100" rx="72" ry="50" fill="none" stroke="#00c8e0" stroke-width="12" filter="url(#sk4)" opacity="0.5"/>
+      <path d="M 18,75 C 4,75 0,90 0,100 C 0,110 4,125 18,125" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" filter="url(#sk4)"/>
+      <path d="M 18,52 L 110,48 L 114,152 L 16,154 Z" fill="#4dd9f0" filter="url(#sk4)"/>
+      <path d="M 18,52 L 110,48 L 114,152 L 16,154 Z" fill="none" stroke="#111" stroke-width="4" filter="url(#sk4)"/>
+      <ellipse cx="65" cy="55" rx="44" ry="12" fill="#3a1a0a" filter="url(#sk4)"/>
+      <text x="65" y="110" text-anchor="middle" font-family="Caveat,cursive" font-size="24" font-weight="700" fill="#111">DONE!</text>
+    </svg>
+  </div>
+
+  <div class="retro-window results-window" id="results-window">
+    <div class="win-titlebar">
+      <span class="win-title">RESULTS.exe</span>
+      <span class="win-close">□</span>
+    </div>
+    <div class="win-body results-body">
+
+      <div class="results-top-row">
+        <div class="result-score-block">
+          <div class="big-score" id="big-score">00</div>
+          <div class="score-denom">/ 63</div>
+        </div>
+        <div class="result-date" id="result-date"></div>
+      </div>
+
+      <div class="severity-band" id="severity-band">
+        <div class="sev-emoji" id="sev-emoji"></div>
+        <div class="sev-text">
+          <div class="sev-label" id="sev-label"></div>
+          <div class="sev-desc"  id="sev-desc"></div>
+        </div>
+      </div>
+
+      <!-- Score bar -->
+      <div class="bar-row">
+        <span class="bar-cap">0</span>
+        <div class="bar-track"><div class="bar-fill" id="bar-fill"></div></div>
+        <span class="bar-cap">63</span>
+      </div>
+      <div class="bar-legend">
+        <span style="color:#15803d">NORMAL</span>
+        <span style="color:#ca8a04">MILD</span>
+        <span style="color:#c2410c">MODERATE</span>
+        <span style="color:#991b1b">SEVERE</span>
+      </div>
+
+      <!-- Category breakdown -->
+      <div class="section-label">// CATEGORY BREAKDOWN</div>
+      <div id="breakdown-rows"></div>
+
+      <!-- Full response review -->
+      <div class="section-label" style="margin-top:16px">// YOUR RESPONSES</div>
+      <button class="retro-btn full" onclick="toggleReview(this)">[ SHOW ALL RESPONSES ]</button>
+      <div class="review-list hidden" id="review-list"></div>
+
+      <!-- Interpretation -->
+      <div class="section-label" style="margin-top:16px">// SCORE GUIDE</div>
+      <div class="interp-rows">
+        <div class="irow"><span class="irange">01–10</span><span class="ilvl" style="color:#15803d">Normal ups &amp; downs</span></div>
+        <div class="irow"><span class="irange">11–16</span><span class="ilvl" style="color:#65a30d">Mild mood disturbance</span></div>
+        <div class="irow"><span class="irange">17–20</span><span class="ilvl" style="color:#ca8a04">Borderline clinical depression</span></div>
+        <div class="irow"><span class="irange">21–30</span><span class="ilvl" style="color:#c2410c">Moderate depression</span></div>
+        <div class="irow"><span class="irange">31–40</span><span class="ilvl" style="color:#dc2626">Severe depression</span></div>
+        <div class="irow"><span class="irange">40–63</span><span class="ilvl" style="color:#991b1b;font-weight:700">Extreme depression</span></div>
+      </div>
+
+      <div class="result-actions">
+        <button class="retro-btn primary" onclick="retake()">[ ↺ RETAKE ]</button>
+        <button class="retro-btn" onclick="window.print()">[ ⎙ PRINT ]</button>
+      </div>
+
+      <p class="results-disclaimer">// This tool does not constitute a clinical diagnosis.<br/>// Please consult a qualified mental health professional.</p>
+    </div>
+  </div>
+
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
