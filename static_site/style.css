@@ -290,6 +290,8 @@ html, body {
   overflow: visible;
 }
 
+
+
 /* Click-to-start text animation on SVG */
 .click-to-start-text {
   animation: crt-flicker 2.8s ease-in-out infinite;
@@ -833,10 +835,11 @@ html, body {
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  #screen-quiz  { flex-direction: column; padding: 72px 16px 20px; height: 100vh; overflow-y: auto; }
-  #screen-results { flex-direction: column; padding: 72px 16px 20px; height: 100vh; overflow-y: auto; }
-  .quiz-window, .results-window { max-width: 100%; }
-  .score-window { align-self: auto; }
+  #screen-quiz  { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
+  #screen-results { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
+  .windows-container { flex-direction: column; align-items: stretch !important; gap: 16px; }
+  .quiz-window, .results-window, .share-window { max-width: 100% !important; margin: 0; flex: none !important; }
+  .score-window { align-self: stretch; max-width: 100%; margin: 0; }
   .results-mug-wrap { display: none; }
   .obj-notebook { right: 1%; top: 2%; }
   .obj-mug { right: 1%; bottom: 2%; }
@@ -845,5 +848,10 @@ html, body {
 @media (max-width: 560px) {
   .laptop-svg { width: 92vw; }
   .obj-notebook { display: none; }
-  .big-score { font-size: 60px; }
+  .big-score { font-size: 50px; }
+  .win-body { padding: 16px 12px 20px; }
+  .win-titlebar { padding: 4px 6px; }
+  .options-grid { gap: 8px; margin-top: 16px; }
+  .option-btn { padding: 12px 10px; font-size: 14px; }
+  .nav-bar { padding: 8px 12px; }
 }

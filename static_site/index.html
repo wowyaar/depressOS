@@ -622,19 +622,34 @@ document.addEventListener('keydown', function(e){
     var isDragging = false;
     var startX, startY, origLeft, origTop;
 
-    // On first drag, we NO LONGER convert the window to position:fixed
-    // We just leave it relative/fixed so it doesn't break document flow!
+    // Convert the window to position:fixed and leave a ghost placeholder
+    function initFixed() {
+      if (win.style.position === 'fixed') return;
+      var rect = win.getBoundingClientRect();
+      
+      // Create ghost to prevent layout collapse
+      var ghost = document.createElement('div');
+      ghost.style.width = rect.width + 'px';
+      ghost.style.height = rect.height + 'px';
+      ghost.style.flexShrink = '0';
+      win.parentNode.insertBefore(ghost, win);
+
+      win.style.position = 'fixed';
+      win.style.left = rect.left + 'px';
+      win.style.top  = rect.top  + 'px';
+      win.style.margin = '0';
+    }
 
     titlebar.addEventListener('mousedown', function(e) {
       // Don't drag when clicking the close button
       if (e.target.classList.contains('win-close')) return;
       e.preventDefault();
+      initFixed();
       isDragging = true;
       startX = e.clientX;
       startY = e.clientY;
-      var comp = window.getComputedStyle(win);
-      origLeft = parseFloat(comp.left) || 0;
-      origTop  = parseFloat(comp.top)  || 0;
+      origLeft = parseInt(win.style.left) || 0;
+      origTop  = parseInt(win.style.top)  || 0;
       win.classList.add('dragging');
       win.style.zIndex = ++topZIndex;
     });
@@ -643,11 +658,11 @@ document.addEventListener('keydown', function(e){
     titlebar.addEventListener('touchstart', function(e) {
       if (e.target.classList.contains('win-close')) return;
       var t = e.touches[0];
+      initFixed();
       isDragging = true;
       startX = t.clientX; startY = t.clientY;
-      var comp = window.getComputedStyle(win);
-      origLeft = parseFloat(comp.left) || 0;
-      origTop  = parseFloat(comp.top)  || 0;
+      origLeft = parseInt(win.style.left) || 0;
+      origTop  = parseInt(win.style.top)  || 0;
       win.classList.add('dragging');
       win.style.zIndex = ++topZIndex;
     }, { passive: true });
@@ -662,10 +677,11 @@ document.addEventListener('keydown', function(e){
 
     document.addEventListener('touchmove', function(e) {
       if (!isDragging) return;
+      if (e.cancelable) e.preventDefault(); // Prevent page scrolling while dragging
       var t = e.touches[0];
       win.style.left = (origLeft + t.clientX - startX) + 'px';
       win.style.top  = (origTop  + t.clientY - startY) + 'px';
-    }, { passive: true });
+    }, { passive: false });
 
     function stopDrag() {
       if (!isDragging) return;
