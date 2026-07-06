@@ -641,6 +641,7 @@ document.addEventListener('keydown', function(e){
     }
 
     titlebar.addEventListener('mousedown', function(e) {
+      if (window.innerWidth <= 860) return;
       // Don't drag when clicking the close button
       if (e.target.classList.contains('win-close')) return;
       e.preventDefault();
@@ -656,6 +657,7 @@ document.addEventListener('keydown', function(e){
 
     // Touch support
     titlebar.addEventListener('touchstart', function(e) {
+      if (window.innerWidth <= 860) return;
       if (e.target.classList.contains('win-close')) return;
       var t = e.touches[0];
       initFixed();

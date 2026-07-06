@@ -835,14 +835,15 @@ html, body {
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  #screen-quiz  { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
-  #screen-results { flex-direction: column; padding: 72px 12px 20px; height: 100vh; overflow-y: auto; align-items: stretch; }
+  #screen-quiz  { flex-direction: column; padding: 20px 12px 20px; height: 100%; overflow-y: auto; align-items: stretch; gap: 12px; }
+  #screen-results { flex-direction: column; padding: 20px 12px 20px; height: 100%; overflow-y: auto; align-items: stretch; gap: 12px; }
   .windows-container { flex-direction: column; align-items: stretch !important; gap: 16px; }
   .quiz-window, .results-window, .share-window { max-width: 100% !important; margin: 0; flex: none !important; }
   .score-window { align-self: stretch; max-width: 100%; margin: 0; }
   .results-mug-wrap { display: none; }
   .obj-notebook { right: 1%; top: 2%; }
   .obj-mug { right: 1%; bottom: 2%; }
+  .quiz-laptop-svg { width: 160px; margin: 0 auto; display: block; }
 }
 
 @media (max-width: 560px) {
